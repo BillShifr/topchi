@@ -1,13 +1,14 @@
 import {createBrowserRouter} from 'react-router-dom';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
-import MapPage from '../pages/MapPage';
+import MapPage from '../pages/mapPage/MapPage.tsx';
 import {JSX} from "react";
+import MainPage from "../pages/mainPage/MainPage.tsx";
 
 const routes: ({ path: string; element: JSX.Element })[] = [
     {
         path: '/',
-        element: <MapPage/>,
+        element: <MainPage/>,
     },
     {
         path: '/login',
@@ -19,7 +20,7 @@ const routes: ({ path: string; element: JSX.Element })[] = [
     },
     {
         path: '*',
-        element: <MapPage/>,
+        element: <MainPage/>,
     },
 ];
 

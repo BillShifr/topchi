@@ -9,11 +9,15 @@ export const createEvent = async (req: any, res: Response) => {
         if (!title || !activity || !date) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
+        const parsedDate = new Date(date);
+        if (!title || !activity || !date || isNaN(parsedDate.getTime())) {
+            return res.status(400).json({ message: 'Missing or invalid fields' });
+        }
         const event = await eventService.createEvent({
             title,
             description,
             activity,
-            date: new Date(date),
+            date: parsedDate,
             gear,
             organizerId: req.user!.userId,
             venueId,
